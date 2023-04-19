@@ -408,7 +408,7 @@ class YOLOv8_ObjectCounter(YOLOv8_ObjectDetector):
             # Run object detection on the frame and calculate FPS
             beg = time.time()
             results = self.predict_img(frame, verbose = False)
-            print(results)
+            #print(results)
             
             if results == None:
                 print('***********************************************')
@@ -416,6 +416,7 @@ class YOLOv8_ObjectCounter(YOLOv8_ObjectDetector):
             for box in results.boxes:
                 score = box.conf.item() * 100
                 class_id = int(box.cls.item())
+                print(box)
 
                 x1 , y1 , x2, y2 = np.squeeze(box.xyxy.numpy()).astype(int)
 
