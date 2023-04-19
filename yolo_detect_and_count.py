@@ -44,15 +44,17 @@ class YOLOv8_ObjectDetector:
 
     """
 
-    def __init__(self, model_file = 'yolov8n.pt', labels= None, classes = None, conf = 0.25, iou = 0.45 ):
+    def __init__(self, model_file = 'yolov8n.pt', model_name = None, labels= None, classes = None, conf = 0.25, iou = 0.45 ):
 
         self.classes = classes
         self.conf = conf
         self.iou = iou
 
         self.model = YOLO(model_file)
-        self.model_name = model_file.split('.')[0]
         self.results = None
+
+        if model_name == None:
+            self.model_name = os.path.basename(model_file).split('.')[0]
 
         # if no labels are provided then use default COCO names 
         if labels == None:
