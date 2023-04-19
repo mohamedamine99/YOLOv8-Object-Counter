@@ -408,6 +408,8 @@ class YOLOv8_ObjectCounter(YOLOv8_ObjectDetector):
             # Run object detection on the frame and calculate FPS
             beg = time.time()
             results = self.predict_img(frame, verbose = False)
+            print(results)
+            
             if results == None:
                 print('***********************************************')
             fps = 1 / (time.time() - beg)
